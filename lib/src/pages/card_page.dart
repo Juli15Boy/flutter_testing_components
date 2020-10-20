@@ -29,7 +29,6 @@ class CardPage extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: ,
             children: [
               FlatButton(
                 child: Text('Cancel'),
