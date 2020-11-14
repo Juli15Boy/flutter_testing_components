@@ -35,7 +35,7 @@ class CardPage extends StatelessWidget {
                 onPressed: () {},
               ),
               FlatButton(
-                child: Text('Ok'),
+                child: Text('Okey'),
                 onPressed: () {},
               ),
             ],
