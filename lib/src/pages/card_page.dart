@@ -12,7 +12,18 @@ class CardPage extends StatelessWidget {
         children: <Widget>[
           _cardFirstType(),
           SizedBox(height: 30.0),
-          _cardSecondType()
+          _cardSecondType(),
+          SizedBox(height: 30.0),
+          _cardFirstType(),
+          SizedBox(height: 30.0),
+          _cardSecondType(),
+          SizedBox(height: 30.0),
+_cardFirstType(),
+          SizedBox(height: 30.0),
+          _cardSecondType(),
+          SizedBox(height: 30.0),
+
+
         ],
       ),
     );
@@ -52,7 +63,7 @@ class CardPage extends StatelessWidget {
   }
 
   Widget _cardSecondType() {
-    return Card(
+    final card =  Container(
       child: Column(
         children: <Widget>[
           FadeInImage(
@@ -68,6 +79,26 @@ class CardPage extends StatelessWidget {
             child: Text("Nice Pumpking King"),
           ),
         ],
+      ),
+    );
+
+    return Container(
+      decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(30.0),
+        color: Colors.white,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 10.0,
+            spreadRadius: 2.0,
+            offset: Offset(2.0, 10.0)
+          ),           
+        ], 
+      ),
+      child: ClipRRect(
+        child: card,
+        borderRadius: BorderRadius.circular(30.0),
+        
       ),
     );
   }
