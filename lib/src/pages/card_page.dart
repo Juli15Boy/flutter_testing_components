@@ -9,13 +9,19 @@ class CardPage extends StatelessWidget {
       ),
       body: ListView(
         padding: EdgeInsets.all(10.0),
-        children: <Widget>[_cardFirstType()],
+        children: <Widget>[
+          _cardFirstType(),
+          SizedBox(height: 30.0),
+          _cardSecondType()
+        ],
       ),
     );
   }
 
   Widget _cardFirstType() {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      elevation: 5.0,
       child: Column(
         children: [
           ListTile(
@@ -40,6 +46,27 @@ class CardPage extends StatelessWidget {
               ),
             ],
           )
+        ],
+      ),
+    );
+  }
+
+  Widget _cardSecondType() {
+    return Card(
+      child: Column(
+        children: <Widget>[
+          FadeInImage(
+            fadeInDuration: Duration(milliseconds: 200),
+            height: 250,
+            fit: BoxFit.cover,
+            placeholder: AssetImage('assets/jar-loading.gif'),
+            image: NetworkImage(
+                'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebestpictureproject.files.wordpress.com%2F2014%2F12%2Fnightmarebeforechristmas4.jpg&f=1&nofb=1'),
+          ),
+          Container(
+            padding: EdgeInsets.all(10.0),
+            child: Text("Nice Pumpking King"),
+          ),
         ],
       ),
     );

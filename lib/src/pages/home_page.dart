@@ -20,7 +20,6 @@ class HomePage extends StatelessWidget {
       future: menuProvider.loadData(),
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-        print('Builder');
         return ListView(
           children: _getListItems(snapshot.data, context),
         );
@@ -30,6 +29,7 @@ class HomePage extends StatelessWidget {
 
   List<Widget> _getListItems(List<dynamic> data, BuildContext context) {
     final List<Widget> options = [];
+
     data.forEach((opt) {
       final tempWidget = ListTile(
         title: Text(opt['text']),
