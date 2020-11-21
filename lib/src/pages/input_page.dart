@@ -12,6 +12,9 @@ class _InputPageState extends State<InputPage> {
   String _email = '';
   String _date = '';
 
+  List<String> _movieObjects = ['Pumpkin', 'Gift', 'Rubber Duck', 'Ghost'];
+  String _selectedOption = 'Pumpkin';
+
   TextEditingController _inputDateFieldController = new TextEditingController();
 
   @override
@@ -30,6 +33,8 @@ class _InputPageState extends State<InputPage> {
           _createPasswordField(),
           Divider(),
           _createDateField(context),
+          Divider(),
+          _createDropdown(),
           Divider(),
           _displayValues(),
         ],
@@ -92,13 +97,6 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
-  Widget _displayValues() {
-    return ListTile(
-      title: Text('Name: $_name'),
-      subtitle: Text('Email: $_email'),
-    );
-  }
-
   Widget _createDateField(BuildContext context) {
     return TextField(
       controller: _inputDateFieldController,
@@ -135,5 +133,46 @@ class _InputPageState extends State<InputPage> {
         _inputDateFieldController.text = _date;
       });
     }
+  }
+
+  List<DropdownMenuItem<String>> getDropdownOptions() {
+    List<DropdownMenuItem<String>> list = new List();
+
+    _movieObjects.forEach((obj) {
+      list.add(DropdownMenuItem(
+        child: Text(obj),
+        value: obj,
+      ));
+    });
+
+    return list;
+  }
+
+  Widget _createDropdown() {
+    return Row(
+      children: <Widget>[
+        Icon(Icons.select_all),
+        SizedBox(width: 30.0),
+        Expanded(
+          child: DropdownButton(
+            items: getDropdownOptions(),
+            value: _selectedOption,
+            onChanged: (option) {
+              setState(() {
+                _selectedOption = option;
+              });
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _displayValues() {
+    return ListTile(
+      title: Text('Name: $_name'),
+      subtitle: Text('Email: $_email'),
+      trailing: Text(_selectedOption),
+    );
   }
 }
